@@ -1,0 +1,17 @@
+Se der problema para reconhecer a função "uuid_generate_v4()" no POSTGRESQL execute o comando abaixo:
+✔ CREATE EXTENSION IF NOT EXISTS "uuid-ossp"; @done(20-09-26 13:14)
+
+CRIAR MIGRATIONS:
+yarn typeorm migration:create -n CreateTableCustomers
+yarn typeorm migration:create -n CreateTableProducts
+yarn typeorm migration:create -n CreateTableOrders
+yarn typeorm migration:create -n CreateTableOrdersProducts
+
+CRIAR MIGRATIONS DOS CAMPOS PARA AS RELATIONS:
+yarn typeorm migration:create -n AddCustomerIdToOrders
+yarn typeorm migration:create -n AddOrderIdToOrdersProducts
+yarn typeorm migration:create -n AddProductIdToOrdersProducts
+
+EXECUÇÃO:
+yarn typeorm migration:run
+yarn typeorm migration:revert
